@@ -1,0 +1,6 @@
+{
+  "name": "consult",
+  "description": "Manage AI instruction files for your project. Includes /consult:init to scaffold AGENTS.md and docs/, /consult:add-to to route new knowledge to the right file, and a passive consult-core skill that orients every AI agent to the project's instruction hierarchy.",
+  "version": "0.2.0",
+  "skills": "./skills"
+}
