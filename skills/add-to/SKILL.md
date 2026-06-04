@@ -31,6 +31,7 @@ Before classifying, read:
 1. `AGENTS.md` — understand existing rules, what's already covered, current structure/sections
 2. `docs/architecture.md` — understand what architecture detail already exists
 3. `docs/coding_conventions.md` — understand what conventions already exist
+4. If the knowledge seems feature-specific, also check `docs/features/` for an existing file for that feature.
 
 This prevents duplicate entries and helps you place content precisely.
 
@@ -45,9 +46,10 @@ For each piece of knowledge, determine its type using this routing table:
 | Tech stack, system design, architectural layers, service boundaries, data flow | `docs/architecture.md` | Nearest matching heading, or new heading |
 | Global coding style: naming, formatting, patterns, error handling, testing | `docs/coding_conventions.md` | Nearest matching heading |
 | Conventions for a specific tool/library (ORM, router, test framework, etc.) | `docs/coding_conventions/<tool>.md` | Create file if needed |
+| Rules, constraints, or patterns specific to one feature (auth, payments, onboarding, etc.) | `docs/features/<feature>.md` | Create file if needed |
 | AI agent rule: what to do, what never to do, workflow requirements | `AGENTS.md` → Rules section | Append to Rules |
 | A decision that affects both architecture AND conventions | Split: architecture decision → `docs/architecture.md`, derived convention → `docs/coding_conventions.md` |
-| Ambiguous / unclear | Do NOT guess. Ask the user: "Is this an architecture decision, a coding convention, or an AI rule?" |
+| Ambiguous / unclear | Do NOT guess. Ask the user: "Is this an architecture decision, a coding convention, a feature rule, or an AI rule?" |
 
 **Classify confidently.** Most knowledge is unambiguous. Only ask when genuinely unclear.
 
@@ -102,7 +104,9 @@ Report the result:
 ✅ Added to docs/coding_conventions.md → ## Naming
 ```
 
-If you created a new file (e.g., `docs/coding_conventions/orm.md`), also add a reference line to `docs/coding_conventions.md` in the "Tool-Specific Conventions" section.
+If you created a new tool-specific file (e.g., `docs/coding_conventions/orm.md`), also add a reference line to `docs/coding_conventions.md` in the "Tool-Specific Conventions" section.
+
+If you created a new feature file (e.g., `docs/features/auth.md`), also add a reference line to `AGENTS.md` in the appropriate section (e.g., `→ See [docs/features/auth.md](docs/features/auth.md) for auth-specific rules.`).
 
 ## Important Constraints
 

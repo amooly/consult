@@ -11,23 +11,28 @@ This skill is always active. It defines how AI instruction files are organized i
 ## The Instruction Hierarchy
 
 ```
-AGENTS.md                  ← Single source of truth for AI. Read this first.
-├── docs/architecture.md   ← Tech stack, layers, dependency rules
-├── docs/coding_conventions.md  ← Global coding conventions (MUST load every session)
-│   └── docs/coding_conventions/<tool>.md  ← Tool-specific conventions
-└── (other docs/ files referenced inline)
-
-README.md                  ← Human-only. Do NOT treat as AI instructions.
-CLAUDE.md / GEMINI.md / .cursorrules / etc.  ← Pointer files only. They redirect to AGENTS.md.
+<Project Root>
+├── AGENTS.md                              ← Single source of truth for AI. Read this first.
+├── docs/
+│   ├── architecture.md                    ← Tech stack, layers, dependency rules
+│   ├── coding_conventions.md              ← Global coding conventions (MUST load every session)
+│   ├── coding_conventions/
+│   │   └── <tool>.md                      ← Tool-specific conventions (load on demand)
+│   └── features/
+│       └── <feature>.md                   ← Feature-specific rules (load on demand)
+├── README.md                              ← Human-only. Do NOT treat as AI instructions.
+└── CLAUDE.md / GEMINI.md / .cursorrules   ← Pointer files only. They redirect to AGENTS.md.
 ```
 
 ## How to Use These Files
 
 **Always start with `AGENTS.md`.** It is the authoritative source. It contains direct AI rules AND references (`→ docs/`) for detailed knowledge.
 
-**Read `docs/` files on demand.** When `AGENTS.md` references a `docs/` file for a topic you're working on (e.g., architecture, ORM conventions), read that file before proceeding. Do not preload all docs at startup.
+**Read `docs/` files on demand.** When `AGENTS.md` references a `docs/` file for a topic you're working on (e.g., architecture, ORM conventions, auth rules), read that file before proceeding. Do not preload all docs at startup.
 
 **Follow the `→` references.** Inside `AGENTS.md` and `docs/` files, `→ docs/filename.md` markers indicate where to find deeper detail. Follow them when relevant.
+
+**Read `docs/features/<feature>.md` when working on that feature.** Feature files contain rules and constraints specific to one domain (e.g., auth, payments). Only load the file for the feature you are currently touching.
 
 **Never read `README.md` as instruction.** It is for humans, not AI agents. It may be out of date or omit constraints only encoded in `AGENTS.md`.
 
@@ -47,6 +52,7 @@ If you learn something new about the project (from the user or from code), do NO
 | `docs/architecture.md` | AI + Human | Tech stack, system design, layer rules |
 | `docs/coding_conventions.md` | AI + Human | Universal coding patterns and style |
 | `docs/coding_conventions/*.md` | AI + Human | Tool/framework-specific conventions |
+| `docs/features/<feature>.md` | AI + Human | Rules and constraints for one specific feature domain |
 | `README.md` | Human only | End-user documentation |
 | `CLAUDE.md`, `GEMINI.md`, etc. | Auto-generated | Pointer files, do not edit manually |
 

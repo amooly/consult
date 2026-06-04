@@ -30,6 +30,10 @@ Search the project root for ALL known AI instruction files:
 
 Report what you found. Note empty files.
 
+**`docs/` collision check:** If a `docs/` folder exists but contains non-AI content (e.g., user-facing guides, API references, changelogs), warn the user:
+> "`docs/` already exists and contains human-readable documentation. The consult structure will add AI instruction files alongside it. Existing files will not be touched. Confirm to proceed, or choose a different path."
+Wait for confirmation before continuing.
+
 ## Step 2: Branch on Results
 
 ### 2a. No instruction files found → Fresh Scaffold
@@ -53,6 +57,7 @@ Then proceed directly to **Step 3** (scaffold) with empty starter content.
    - Architecture / tech stack / layers → `docs/architecture.md`
    - Global coding conventions → `docs/coding_conventions.md`
    - Tool-specific conventions (ORM, testing, etc.) → `docs/coding_conventions/<tool>.md`
+   - Feature-specific rules (auth, payments, onboarding, etc.) → `docs/features/<feature>.md`
    - Human-readable narrative → `README.md` (leave untouched, flag for user)
 
 ## Step 3: Write the File Structure
@@ -136,6 +141,9 @@ Create these files if they do not exist (do not overwrite non-empty files withou
 **`docs/coding_conventions/` directory**  
 Create a `.gitkeep` placeholder so the directory is tracked in git. Do not create individual tool files unless you extracted tool-specific content during Step 2.
 
+**`docs/features/` directory**  
+Create a `.gitkeep` placeholder so the directory is tracked in git. Do not create individual feature files unless you extracted feature-specific content during Step 2.
+
 ### 3c. Write Pointer Files
 
 Write the following files. If they already exist, **overwrite** them with a single pointer line. Do NOT merge content — content goes in `AGENTS.md`:
@@ -161,6 +169,7 @@ After writing all files, print a summary:
 ✅ Created docs/architecture.md
 ✅ Created docs/coding_conventions.md
 ✅ Created docs/coding_conventions/ (empty)
+✅ Created docs/features/ (empty)
 ✅ Wrote pointer: CLAUDE.md
 ✅ Wrote pointer: GEMINI.md
 ✅ Wrote pointer: .cursorrules
