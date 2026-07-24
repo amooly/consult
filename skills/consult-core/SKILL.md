@@ -62,3 +62,18 @@ If you learn something new about the project (from the user or from code), do NO
 - **To add new knowledge** to a `docs/` file or `AGENTS.md`: use `/consult:add-to`
 - **Never directly overwrite** `AGENTS.md` or `docs/` files without user confirmation
 - **Pointer files** (`CLAUDE.md`, etc.) are auto-managed. Do not add content to them.
+
+## Reference Examples
+
+A complete, realistic example of what the instruction structure looks like after `/consult:init` and several `/consult:add-to` calls is in the `reference/` directory, co-located with this skill file.
+
+Read these files when you need to produce or validate output — they show correct formatting, tone, and content placement:
+
+| File | Shows |
+|------|-------|
+| `reference/AGENTS.md` | A fully scaffolded AGENTS.md with architecture, conventions, and rules sections |
+| `reference/CLAUDE.md` | A correctly written pointer file |
+| `reference/docs/architecture.md` | A populated architecture file with tech stack, layers, and dependency rules |
+| `reference/docs/coding_conventions.md` | Global coding conventions with all standard sections filled in |
+| `reference/docs/coding_conventions/orm.md` | A tool-specific convention file added via `/consult:add-to` |
+| `reference/docs/features/auth.md` | A feature rule file added via `/consult:add-to` |
